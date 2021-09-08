@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
-    xmlns:local="clr-namespace:calculator"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Calculator"
     Width="320"
@@ -15,14 +14,16 @@
     AcrylicWindowStyle="NoIcon"
     BorderThickness="0"
     Icon="Assets/calc.png"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
         <Style
             x:Key="FunctionButtonStyle"
             BasedOn="{StaticResource ButtonRevealStyle}"
             TargetType="{x:Type Button}">
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontFamily" Value="/calculator;component/Assets/#Calculator Fluent Icons" />
+            <Setter Property="FontSize" Value="16" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
@@ -65,107 +66,137 @@
             <Button
                 Margin="1"
                 Content="&#xe94c;"
-                FontFamily="Segoe Fluent Icons"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
+                Click="ClearEntryBtn_OnClick"
                 Content="CE"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
+                Click="ClearBtn_OnClick"
                 Content="C"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
+                Click="BackSpcBtn_OnClick"
                 Content="&#xe94f;"
-                FontFamily="Segoe Fluent Icons"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
-                Content="1/x"
+                Content="&#xF7C9;"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
-                Content="x2"
+                Content="&#xF7C8;"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
-                Content="&#xe94b;"
-                FontFamily="Segoe Fluent Icons"
+                Content="&#xF899;"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
+                Name="divide"
                 Margin="1"
+                Click="OperatorBtn_OnClick"
                 Content="&#xe94a;"
-                FontFamily="Segoe Fluent Icons"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="7"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="8"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="9"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
+                Name="mult"
                 Margin="1"
+                Click="OperatorBtn_OnClick"
                 Content="&#xe947;"
-                FontFamily="Segoe Fluent Icons"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="4"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="5"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="6"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
+                Name="minus"
                 Margin="1"
+                Click="OperatorBtn_OnClick"
                 Content="&#xe949;"
-                FontFamily="Segoe Fluent Icons"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="1"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="2"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="3"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
+                Name="plus"
                 Margin="1"
+                Click="OperatorBtn_OnClick"
                 Content="&#xe948;"
-                FontFamily="Segoe Fluent Icons"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
-                Content="±"
-                Style="{StaticResource NumericButtonStyle}" />
+                Background="{DynamicResource SystemAltMediumHighColorBrush}"
+                BorderThickness="1"
+                Click="PosNegBtn_OnClick"
+                Content="&#xF898;"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
+                FontSize="14"
+                Style="{StaticResource ButtonRevealStyle}" />
             <Button
                 Margin="1"
+                Click="NumberBtn_OnClick"
                 Content="0"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
                 Margin="1"
+                Click="Dot_OnClick"
                 Content="."
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
                 Margin="1"
                 Background="#30808080"
-                Content="&#xE94e;"
-                FontFamily="Segoe Fluent Icons"
+                Click="EqualBtn_OnClick"
+                Content="&#xE94E;"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
         </UniformGrid>
         <UniformGrid
@@ -173,34 +204,31 @@
             Columns="6"
             Rows="1">
             <Button
-                Height="24"
-                Margin="2"
-                Content="MC"
+                Margin="1"
+                Content="&#xF754;"
+                IsEnabled="False"
                 Style="{StaticResource FunctionButtonStyle}" />
             <Button
-                Height="24"
-                Margin="2"
-                Content="MR"
+                Margin="1"
+                Content="&#xF755;"
+                IsEnabled="False"
                 Style="{StaticResource FunctionButtonStyle}" />
             <Button
-                Height="24"
-                Margin="2"
-                Content="M+"
+                Margin="1"
+                Content="&#xF757;"
                 Style="{StaticResource FunctionButtonStyle}" />
             <Button
-                Height="24"
-                Margin="2"
-                Content="M-"
+                Margin="1"
+                Content="&#xF758;"
                 Style="{StaticResource FunctionButtonStyle}" />
             <Button
-                Height="24"
-                Margin="2"
-                Content="MS"
+                Margin="1"
+                Content="&#xF756;"
                 Style="{StaticResource FunctionButtonStyle}" />
             <Button
-                Height="24"
-                Margin="2"
-                Content="M^"
+                Margin="1"
+                Content="&#xE61D;"
+                IsEnabled="False"
                 Style="{StaticResource FunctionButtonStyle}" />
         </UniformGrid>
         <Grid Grid.Row="0" ShowGridLines="False">
@@ -214,6 +242,8 @@
                 Grid.Column="0"
                 Width="40"
                 Height="40"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
                 Background="Transparent"
                 BorderThickness="0"
                 Content="&#xe700;"
@@ -221,15 +251,16 @@
                 Style="{StaticResource ButtonRevealStyle}" />
             <TextBlock
                 Grid.Column="1"
-                Margin="5,0,0,0"
+                Margin="5,0,0,5"
+                Padding="0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Background="Transparent"
-                FontFamily="Segoe UI"
                 FontSize="20"
                 Style="{StaticResource BaseTextBlockStyle}"
                 Text="Standard"
-                TextAlignment="Left" />
+                TextAlignment="Center"
+                UseLayoutRounding="False" />
             <Button
                 Grid.Column="3"
                 Width="40"
@@ -247,7 +278,25 @@
             Width="300"
             HorizontalAlignment="Right"
             Stretch="Uniform">
-            <TextBlock
+            <TextBox
+                
+                Name="mainTxt"
+                Margin="0,0,5,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0"
+                CaretBrush="Transparent"
+                FontFamily="Segoe UI Semibold"
+                FontSize="42"
+                Foreground="{DynamicResource SystemBaseHighColorBrush}"
+                IsReadOnly="False"
+                MaxLength="16"
+                SelectionBrush="#4C4A48"
+                TextAlignment="Center" />
+            <!--<TextBlock
                 Margin="0,0,5,0"
                 HorizontalAlignment="Right"
                 Background="Transparent"
@@ -256,7 +305,7 @@
                 Foreground="{DynamicResource SystemBaseHighColorBrush}"
                 Text="0"
                 TextAlignment="Center"
-                TextWrapping="WrapWithOverflow" />
+                TextWrapping="WrapWithOverflow" />-->
         </Viewbox>
         <TextBlock
             Grid.Row="2"
