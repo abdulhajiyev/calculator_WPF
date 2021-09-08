@@ -247,7 +247,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Content="&#xe700;"
-                FontFamily="Segoe Fluent Icons"
+                FontFamily="/calculator;component/Assets/#Segoe MDL2 Assets"
                 Style="{StaticResource ButtonRevealStyle}" />
             <TextBlock
                 Grid.Column="1"
@@ -269,7 +269,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Content="&#xe81c;"
-                FontFamily="Segoe Fluent Icons"
+                FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 FontSize="14"
                 Style="{StaticResource ButtonRevealStyle}" />
         </Grid>
