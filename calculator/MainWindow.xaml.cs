@@ -23,12 +23,19 @@ namespace calculator
         private void NumberBtn_OnClick(object sender, RoutedEventArgs e)
         {
             if (!(sender is Button btn)) return;
+            if (mainTxt.Text == "Cannot divide by zero")
+            {
+                mainTxt.Text = "";
+            }
             switch (btn.Content)
             {
                 case "0":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
-                        mainTxt.Text += "0";
+                        if (!mainTxt.Text.StartsWith("0") || mainTxt.Text.StartsWith("0,"))
+                        {
+                            mainTxt.Text += "0";
+                        }
                     }
 
                     break;
@@ -36,6 +43,10 @@ namespace calculator
                 case "1":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
+                        if (mainTxt.Text.StartsWith("0") && mainTxt.Text.Length == 1)
+                        {
+                            mainTxt.Text = "";
+                        }
                         mainTxt.Text += "1";
                     }
 
@@ -43,6 +54,10 @@ namespace calculator
                 case "2":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
+                        if (mainTxt.Text.StartsWith("0") && mainTxt.Text.Length == 1)
+                        {
+                            mainTxt.Text = "";
+                        }
                         mainTxt.Text += "2";
                     }
 
@@ -50,6 +65,10 @@ namespace calculator
                 case "3":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
+                        if (mainTxt.Text.StartsWith("0") && mainTxt.Text.Length == 1)
+                        {
+                            mainTxt.Text = "";
+                        }
                         mainTxt.Text += "3";
                     }
 
@@ -57,6 +76,10 @@ namespace calculator
                 case "4":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
+                        if (mainTxt.Text.StartsWith("0") && mainTxt.Text.Length == 1)
+                        {
+                            mainTxt.Text = "";
+                        }
                         mainTxt.Text += "4";
                     }
 
@@ -64,6 +87,10 @@ namespace calculator
                 case "5":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
+                        if (mainTxt.Text.StartsWith("0") && mainTxt.Text.Length == 1)
+                        {
+                            mainTxt.Text = "";
+                        }
                         mainTxt.Text += "5";
                     }
 
@@ -71,6 +98,10 @@ namespace calculator
                 case "6":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
+                        if (mainTxt.Text.StartsWith("0") && mainTxt.Text.Length == 1)
+                        {
+                            mainTxt.Text = "";
+                        }
                         mainTxt.Text += "6";
                     }
 
@@ -78,6 +109,10 @@ namespace calculator
                 case "7":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
+                        if (mainTxt.Text.StartsWith("0") && mainTxt.Text.Length == 1)
+                        {
+                            mainTxt.Text = "";
+                        }
                         mainTxt.Text += "7";
                     }
 
@@ -85,6 +120,10 @@ namespace calculator
                 case "8":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
+                        if (mainTxt.Text.StartsWith("0") && mainTxt.Text.Length == 1)
+                        {
+                            mainTxt.Text = "";
+                        }
                         mainTxt.Text += "8";
                     }
 
@@ -92,6 +131,10 @@ namespace calculator
                 case "9":
                     if (mainTxt.Text.Length != mainTxt.MaxLength)
                     {
+                        if (mainTxt.Text.StartsWith("0") && mainTxt.Text.Length == 1)
+                        {
+                            mainTxt.Text = "";
+                        }
                         mainTxt.Text += "9";
                     }
 
@@ -103,32 +146,11 @@ namespace calculator
         {
             if (!(sender is Button btn)) return;
             if (mainTxt.Text == "") return;
-            switch (Operator)
-            {
-                case '+':
-                    Value += Convert.ToDouble(mainTxt.Text);
-                    break;
-                case '-':
-                    Value -= Convert.ToDouble(mainTxt.Text);
-                    break;
-                case 'x':
-                    Value *= Convert.ToDouble(mainTxt.Text);
-                    break;
-                case '/':
-                    if (Value.ToString()[0] == '0')
-                    {
-                        MessageBox.Show("Cannot divide by zero");
-                    }
-                    else
-                        Value /= Convert.ToDouble(mainTxt.Text);
-
-                    break;
-            }
-
             Operator = btn.Tag.ToString()[0];
-            remVal.Text = Value.ToString();
-            mainTxt.Text = "";
             remOp.Text = Operator.ToString();
+            Value = Convert.ToDouble(mainTxt.Text);
+            mainTxt.Text = "";
+            remVal.Text = Value.ToString();
         }
 
 
@@ -182,7 +204,7 @@ namespace calculator
                         mainTxt.Text = (Value * Convert.ToDouble(mainTxt.Text)).ToString();
                         break;
                     case '/':
-                        mainTxt.Text = (Value / Convert.ToDouble(mainTxt.Text)).ToString();
+                        mainTxt.Text = mainTxt.Text == "0" ? "Cannot divide by zero" : (Value / Convert.ToDouble(mainTxt.Text)).ToString();
                         break;
                 }
 
@@ -213,6 +235,15 @@ namespace calculator
             {
                 string temp = $"-{mainTxt.Text}";
                 mainTxt.Text = temp;
+            }
+        }
+
+        private void Sqrt_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(mainTxt.Text))
+            {
+                var temp = Convert.ToDouble(mainTxt.Text);
+                mainTxt.Text = Math.Sqrt(temp).ToString();
             }
         }
     }

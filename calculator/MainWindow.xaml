@@ -96,6 +96,7 @@
                 Style="{StaticResource OpButtonStyle}" />
             <Button
                 Margin="1"
+                Click="Sqrt_OnClick"
                 Content="&#xF899;"
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
@@ -105,7 +106,8 @@
                 Click="OperatorBtn_OnClick"
                 Content="&#xe94a;"
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
-                Style="{StaticResource OpButtonStyle}" Tag="/" />
+                Style="{StaticResource OpButtonStyle}"
+                Tag="/" />
             <Button
                 Margin="1"
                 Click="NumberBtn_OnClick"
@@ -127,7 +129,8 @@
                 Click="OperatorBtn_OnClick"
                 Content="&#xe947;"
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
-                Style="{StaticResource OpButtonStyle}" Tag="x" />
+                Style="{StaticResource OpButtonStyle}"
+                Tag="x" />
             <Button
                 Margin="1"
                 Click="NumberBtn_OnClick"
@@ -149,7 +152,8 @@
                 Click="OperatorBtn_OnClick"
                 Content="&#xe949;"
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
-                Style="{StaticResource OpButtonStyle}" Tag="-" />
+                Style="{StaticResource OpButtonStyle}"
+                Tag="-" />
             <Button
                 Margin="1"
                 Click="NumberBtn_OnClick"
@@ -171,7 +175,8 @@
                 Click="OperatorBtn_OnClick"
                 Content="&#xe948;"
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
-                Style="{StaticResource OpButtonStyle}" Tag="+" />
+                Style="{StaticResource OpButtonStyle}"
+                Tag="+" />
             <Button
                 Margin="1"
                 Background="{DynamicResource SystemAltMediumHighColorBrush}"
@@ -279,7 +284,6 @@
             HorizontalAlignment="Right"
             Stretch="Uniform">
             <TextBox
-                
                 Name="mainTxt"
                 Margin="0,0,5,0"
                 HorizontalAlignment="Center"
@@ -308,27 +312,26 @@
                 TextWrapping="WrapWithOverflow" />-->
         </Viewbox>
         <TextBlock
-            
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right"
             Name="remVal"
             Grid.Row="2"
             Margin="0,0,15,0"
-            Foreground="{DynamicResource SystemBaseMediumColorBrush}"
-            Style="{StaticResource BodyTextBlockStyle}"
-            Text=""
-            TextAlignment="Right"/>
-
-        <TextBlock
-            Grid.Row="2"
-            Name="remOp"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Margin="0,0,5,0"
             Foreground="{DynamicResource SystemBaseMediumColorBrush}"
             Style="{StaticResource BodyTextBlockStyle}"
             Text=""
-            TextAlignment="Right"/>
+            TextAlignment="Right" />
+
+        <TextBlock
+            Name="remOp"
+            Grid.Row="2"
+            Margin="0,0,5,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Foreground="{DynamicResource SystemBaseMediumColorBrush}"
+            Style="{StaticResource BodyTextBlockStyle}"
+            Text=""
+            TextAlignment="Right" />
 
 
     </Grid>
