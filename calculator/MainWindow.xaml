@@ -100,12 +100,12 @@
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
                 Style="{StaticResource OpButtonStyle}" />
             <Button
-                Name="divide"
+                Name="Divide"
                 Margin="1"
                 Click="OperatorBtn_OnClick"
                 Content="&#xe94a;"
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
-                Style="{StaticResource OpButtonStyle}" />
+                Style="{StaticResource OpButtonStyle}" Tag="/" />
             <Button
                 Margin="1"
                 Click="NumberBtn_OnClick"
@@ -122,12 +122,12 @@
                 Content="9"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
-                Name="mult"
+                Name="Mult"
                 Margin="1"
                 Click="OperatorBtn_OnClick"
                 Content="&#xe947;"
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
-                Style="{StaticResource OpButtonStyle}" />
+                Style="{StaticResource OpButtonStyle}" Tag="x" />
             <Button
                 Margin="1"
                 Click="NumberBtn_OnClick"
@@ -144,12 +144,12 @@
                 Content="6"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
-                Name="minus"
+                Name="Minus"
                 Margin="1"
                 Click="OperatorBtn_OnClick"
                 Content="&#xe949;"
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
-                Style="{StaticResource OpButtonStyle}" />
+                Style="{StaticResource OpButtonStyle}" Tag="-" />
             <Button
                 Margin="1"
                 Click="NumberBtn_OnClick"
@@ -166,12 +166,12 @@
                 Content="3"
                 Style="{StaticResource NumericButtonStyle}" />
             <Button
-                Name="plus"
+                Name="Plus"
                 Margin="1"
                 Click="OperatorBtn_OnClick"
                 Content="&#xe948;"
                 FontFamily="/calculator;component/Assets/#Calculator Fluent Icons"
-                Style="{StaticResource OpButtonStyle}" />
+                Style="{StaticResource OpButtonStyle}" Tag="+" />
             <Button
                 Margin="1"
                 Background="{DynamicResource SystemAltMediumHighColorBrush}"
@@ -308,17 +308,28 @@
                 TextWrapping="WrapWithOverflow" />-->
         </Viewbox>
         <TextBlock
+            
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Name="remVal"
             Grid.Row="2"
-            Margin="0,0,5,0"
-            VerticalAlignment="Center"
+            Margin="0,0,15,0"
             Foreground="{DynamicResource SystemBaseMediumColorBrush}"
             Style="{StaticResource BodyTextBlockStyle}"
-            Text="8685"
-            TextAlignment="Right" />
+            Text=""
+            TextAlignment="Right"/>
 
+        <TextBlock
+            Grid.Row="2"
+            Name="remOp"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="0,0,5,0"
+            Foreground="{DynamicResource SystemBaseMediumColorBrush}"
+            Style="{StaticResource BodyTextBlockStyle}"
+            Text=""
+            TextAlignment="Right"/>
 
-
-        <!--<TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe UI Semibold" Style="{StaticResource HeaderTextBlockStyle}" Height="61" Margin="68,-11,17,88" Grid.RowSpan="2" Width="178">Standart</TextBlock>-->
 
     </Grid>
 
